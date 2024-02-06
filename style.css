@@ -1,0 +1,21 @@
+body {
+    background-color: aquamarine;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding: 10px;
+    border-radius: 25px;
+}
+
+li:hover {
+    background-color: cadetblue;
+}
