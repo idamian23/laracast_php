@@ -1,63 +1,42 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>Demo</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-	<?php
-	$books = [
-		[
-			'name' => 'Do Androids Dream of Electric Sheep',
-			'author' => 'Philip K. Dick',
-			'releaseYear' => 1968,
-			'purchaseUrl' => 'http://example.com'
-		],
-		[
-			'name' => 'Project Hail Mary',
-			'author' => 'Andy Weir',
-			'releaseYear' => 2021,
-			'purchaseUrl' => 'http://example.com'
-		],
-		[
-			'name' => 'The Martians',
-			'author' => 'Andy Weir',
-			'releaseYear' => 2011,
-			'purchaseUrl' => 'http://example.com'
-		],
-	];
+<?php
+$books = [
+	[
+		'name' => 'Do Androids Dream of Electric Sheep',
+		'author' => 'Philip K. Dick',
+		'releaseYear' => 1968,
+		'purchaseUrl' => 'http://example.com'
+	],
+	[
+		'name' => 'Project Hail Mary',
+		'author' => 'Andy Weir',
+		'releaseYear' => 2021,
+		'purchaseUrl' => 'http://example.com'
+	],
+	[
+		'name' => 'The Martians',
+		'author' => 'Andy Weir',
+		'releaseYear' => 2011,
+		'purchaseUrl' => 'http://example.com'
+	],
+];
 
 
-	function filterByAuthor($books, $name)
-	{
-		$filteredBooks = [];
+function filter($items, $fn)
+{
+	$filteredItems = [];
 
-		foreach ($books as $book) {
-			if ($book['author'] === $name) {
-				$filteredBooks[] = $book;
-			}
+	foreach ($items as $item) {
+		if ($fn($item)) {
+			$filteredItems[] = $item;
 		}
-
-		return $filteredBooks;
 	}
 
-	?>
+	return $filteredItems;
+}
 
-	<ul>
-		<?php foreach (filterByAuthor($books, 'Philip K. Dick') as $book) : ?>
+$filteredBooks = array_filter($books, function ($book) {
+	return $book['author'] === 'Andy Weir';
+});
 
-			<li>
-				<a href="<?= $book['purchaseUrl'] ?>">
-					<?= $book['name'] ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
-				</a>
-			</li>
 
-		<?php endforeach; ?>
-	</ul>
-
-</body>
-
-</html>
+require "index.view.php";
