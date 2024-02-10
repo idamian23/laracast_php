@@ -9,7 +9,6 @@
 
 <body>
 
-
     <ul>
         <?php foreach ($filteredBooks as $book) : ?>
 
