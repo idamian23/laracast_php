@@ -12,5 +12,5 @@
         <a href="/notes" class="text-blue-500 hover:underline">go back... </a>
     </p>
 </main>
-
+/aa
 <?php require("partials/footer.php") ?>
